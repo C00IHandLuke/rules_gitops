@@ -11,13 +11,21 @@
 workspace(name = "com_adobe_rules_gitops")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-
-#
-# Self dependencies
-#
 load("@com_adobe_rules_gitops//gitops:deps.bzl", "rules_gitops_dependencies")
 
 rules_gitops_dependencies()
+
+load("@com_adobe_rules_gitops//gitops:docker.bzl", "docker")
+
+docker()
+
+load("@com_adobe_rules_gitops//gitops:docker_deps.bzl", "docker_deps")
+
+docker_deps()
+
+load("@com_adobe_rules_gitops//gitops:pip.bzl", "docker_pip")
+
+docker_pip()
 
 load("@com_adobe_rules_gitops//gitops:repositories.bzl", "rules_gitops_repositories")
 
